@@ -213,7 +213,7 @@ table.em-meta td:first-child { width: 130px; font-weight: 700; background: #f8f9
   <tr><th style="width:34%">Message type</th><th style="width:22%">Message</th><th>How it is blocked</th></tr>
   <tr><td>Scheduled messages and the welcome message</td><td><a href="#msg-M2" class="ref">M2</a>, <a href="#msg-T0" class="ref">T0</a>, <a href="#msg-T5" class="ref">T5</a>, <a href="#msg-T1" class="ref">T1</a>, <a href="#msg-T4" class="ref">T4</a>, <a href="#msg-T6" class="ref">T6</a>, <a href="#msg-M10" class="ref">M10</a>, <a href="#msg-T7" class="ref">T7</a></td><td>Backend checks at the moment the job runs; no event is fired for customers who are not eligible. The block takes effect immediately</td></tr>
   <tr><td>Campaigns scheduled in CleverTap</td><td><a href="#msg-M1" class="ref">M1</a>, <a href="#msg-A1" class="ref">A1</a>, <a href="#msg-A2" class="ref">A2</a></td><td>Filtered by the user property <code>loyalty_eligible</code>, which backend syncs at 00:30 every day. The block can lag by up to one day</td></tr>
-  <tr><td>Transactional messages</td><td><a href="#msg-M4" class="ref">M4</a>, <a href="#msg-M12" class="ref">M12</a>, <a href="#msg-M13" class="ref">M13</a></td><td>Participation conditions are currently not checked: a customer who has just been credited coin, redeemed a gift or been refunded coin still receives the confirmation message. Pending decision</td></tr>
+  <tr><td>Transactional messages</td><td><a href="#msg-M4" class="ref">M4</a>, <a href="#msg-M12" class="ref">M12</a>, <a href="#msg-M13" class="ref">M13</a></td><td>Participation conditions are not checked: a customer who has just been credited coin, redeemed a gift or been refunded coin always receives the confirmation message, even while blacklisted or blocked by A Book / B Book</td></tr>
 </table>
 
 <h3>Diagram 1: The customer journey and the corresponding messages</h3>
@@ -425,7 +425,7 @@ table.em-meta td:first-child { width: 130px; font-weight: 700; background: #f8f9
   <tr><th style="width:34%">消息类型</th><th style="width:22%">消息</th><th>拦截方式</th></tr>
   <tr><td>定时消息和欢迎消息</td><td><a href="#msg-M2" class="ref">M2</a>, <a href="#msg-T0" class="ref">T0</a>, <a href="#msg-T5" class="ref">T5</a>, <a href="#msg-T1" class="ref">T1</a>, <a href="#msg-T4" class="ref">T4</a>, <a href="#msg-T6" class="ref">T6</a>, <a href="#msg-M10" class="ref">M10</a>, <a href="#msg-T7" class="ref">T7</a></td><td>后端在定时任务运行时立即检查；客户不符合条件则不发送事件。拦截立即生效</td></tr>
   <tr><td>在 CleverTap 中设置的 campaign</td><td><a href="#msg-M1" class="ref">M1</a>, <a href="#msg-A1" class="ref">A1</a>, <a href="#msg-A2" class="ref">A2</a></td><td>按 user property <code>loyalty_eligible</code> 过滤，由后端每天 00:30 同步。拦截最多可能延迟一天</td></tr>
-  <tr><td>交易消息</td><td><a href="#msg-M4" class="ref">M4</a>, <a href="#msg-M12" class="ref">M12</a>, <a href="#msg-M13" class="ref">M13</a></td><td>目前不检查参加条件：客户刚获得 Coin、兑换礼品或被退还 Coin 时，仍会收到确认消息。待确认</td></tr>
+  <tr><td>交易消息</td><td><a href="#msg-M4" class="ref">M4</a>, <a href="#msg-M12" class="ref">M12</a>, <a href="#msg-M13" class="ref">M13</a></td><td>不检查参与条件：客户刚获得 Coin、兑换礼品或被退还 Coin 时，始终会收到确认消息，即使当前处于黑名单或被 A Book / B Book 屏蔽</td></tr>
 </table>
 
 <h3>图 1：客户旅程及对应消息</h3>
@@ -637,7 +637,7 @@ table.em-meta td:first-child { width: 130px; font-weight: 700; background: #f8f9
   <tr><th style="width:34%">Loại tin</th><th style="width:22%">Tin</th><th>Cách chặn</th></tr>
   <tr><td>Tin theo lịch và tin chào mừng</td><td><a href="#msg-M2" class="ref">M2</a>, <a href="#msg-T0" class="ref">T0</a>, <a href="#msg-T5" class="ref">T5</a>, <a href="#msg-T1" class="ref">T1</a>, <a href="#msg-T4" class="ref">T4</a>, <a href="#msg-T6" class="ref">T6</a>, <a href="#msg-M10" class="ref">M10</a>, <a href="#msg-T7" class="ref">T7</a></td><td>Backend kiểm tra ngay lúc job chạy; khách không đủ điều kiện thì không bắn event. Chặn có hiệu lực ngay</td></tr>
   <tr><td>Campaign đặt trong CleverTap</td><td><a href="#msg-M1" class="ref">M1</a>, <a href="#msg-A1" class="ref">A1</a>, <a href="#msg-A2" class="ref">A2</a></td><td>Lọc theo user property <code>loyalty_eligible</code>, được backend đồng bộ lúc 00:30 mỗi ngày. Chặn có thể trễ tối đa một ngày</td></tr>
-  <tr><td>Tin giao dịch</td><td><a href="#msg-M4" class="ref">M4</a>, <a href="#msg-M12" class="ref">M12</a>, <a href="#msg-M13" class="ref">M13</a></td><td>Hiện không kiểm tra điều kiện tham gia: khách vừa được cộng coin, đổi quà hoặc được hoàn coin thì vẫn nhận tin xác nhận. Chờ chốt</td></tr>
+  <tr><td>Tin giao dịch</td><td><a href="#msg-M4" class="ref">M4</a>, <a href="#msg-M12" class="ref">M12</a>, <a href="#msg-M13" class="ref">M13</a></td><td>Không kiểm tra điều kiện tham gia: khách vừa được cộng coin, đổi quà hoặc được hoàn coin thì luôn nhận tin xác nhận, kể cả khi đang bị blacklist hoặc bị chặn A/B Book</td></tr>
 </table>
 
 <h3>Sơ đồ 1: Hành trình của khách và tin tương ứng</h3>
